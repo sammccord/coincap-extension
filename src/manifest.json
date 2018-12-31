@@ -1,0 +1,30 @@
+{
+  "name": "coincap-extension",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "description": "",
+  "homepage_url": "https://ciphernet.sh",
+  "background": {
+    "persistent": true,
+    "scripts": ["background.ts"]
+  },
+  "options_ui": {
+    "page": "options.html",
+    "browser_style": true,
+    "chrome_style": true
+  },
+  "permissions": [
+    "storage",
+    "https://*/*",
+    "http://*/*"
+  ],
+  "web_accessible_resources": ["assets/**/*.*"],
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["content.ts"],
+      "css": ["content.css"]
+    }
+  ]
+}
